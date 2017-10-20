@@ -1,0 +1,55 @@
+{
+	"basePath": "/",
+	"consumes": [
+		"application/json"
+	],
+	"definitions": {
+		"IUser": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"apellido": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"required": [
+				"name",
+				"apellido"
+			],
+			"type": "object"
+		}
+	},
+	"host": "localhost:3000",
+	"info": {
+		"title": "Lucid Web API",
+		"version": "0.0.1"
+	},
+	"paths": {
+		"/users": {
+			"get": {
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"examples": {},
+						"schema": {
+							"$ref": "#/definitions/IUser"
+						}
+					}
+				},
+				"description": "",
+				"parameters": []
+			}
+		}
+	},
+	"produces": [
+		"application/json"
+	],
+	"swagger": "2.0"
+}
