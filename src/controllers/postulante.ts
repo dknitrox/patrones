@@ -1,29 +1,24 @@
-import { PostulanteSchema } from './../postulante';
-export function controllerPostulante(){
-
-	async function getAll(req,res){
+export class PostulanteController{
+	postulanteService:any;
+	constructor(opts){
+		this.postulanteService=opts.postulanteService;
+	}
+	public async getAll(req,res){
 		try{
-			const postulantes=await PostulanteSchema.find({});
+			const postulantes=await this.postulanteService.getAll();
 			res.status(200).send(postulantes);
 		}catch(Exception){
 			res.status(400).send(Exception);
 		}
 	}
 
-	async function add(req,res){
+	public async add(req,res){
 		try{
-		const postulanteCreated= await PostulanteSchema.create(req.body);
+		const postulanteCreated= await this.postulanteService.create(req.body);
 		res.send(200).send(postulanteCreated);
 		}catch(Exception){
 			res.status(400).send(Exception);
 		}
 	}
 
-	return {
-		getAll,
-		getById,
-		add,
-		update,
-		remove,
-	}
 }

@@ -1,4 +1,5 @@
 var request=require('supertest');
+import container from './../src/config/container';
 import { app } from './../src/main.server';
 import { expect,should } from 'chai';
 
@@ -27,3 +28,12 @@ describe('Testeando un endpoint', () => {
 
 
 });
+
+describe("testeando servicio",()=>{
+  it('getAll Services',async ()=>{
+    const users=await container.cradle.postulanteService.getAll();
+    console.log(us
+      ers);
+    expect(users).to.be.equal([]);
+  })
+})

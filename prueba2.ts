@@ -2,35 +2,14 @@ import * as express from 'express';
 import * as mongoose from 'mongoose';
 const app=express();
 const port=process.env.PORT || 9000;
-//import api from './src/routes';
-mongoose.connect('localhost:27027');
+import { Server } from 'typescript-rest';
+import container from './src/config/container';
+import {apiRoute }from './src/routes';
 
-userSchema=mongoose.Schema;
-user=new userSchema({
-	name:string,
-	apellido:string
-})
-let User=mongoose.model('user',userSchema);
-let a=new User({
-	name:"mendozaaa",
-	apellido:"juanito"
-});
-a.save();
-
-import { Get , Route } from 'swagger-ts';
-@Route('users')
-function UserController{
-	@Get()
-	public async getAll(req,res):void{
-		let users= await User.find({});
-		res.send(200,users);
-	}
-	return{
-		getAll
-	}
-}
-
-app.get('/users',UserController().getAll)
+mongoose.connect('mongodb://localhost:27017/di');
+console.log(container);
+app.use('/api',apiRoute(express.Router(),container));
+Server.swagger(app, './dist/swagger.yaml', '/api-docs', 'localhost:5674', ['http']);
 
 app.listen(port,()=>{
 	console.log("App listen in port",port);

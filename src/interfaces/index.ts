@@ -1,1 +1,2 @@
-export * from 'desarrollador';
+export * from './desarrollador';
+export * from './postulante';

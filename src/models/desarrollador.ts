@@ -1,4 +1,4 @@
-import {IDesarollador} from './../interfaces';
+import { IDesarollador} from './../interfaces';
 import { Postulante } from './postulante';
 
 class Desarrollador extends Postulante implements IDesarrollador{
