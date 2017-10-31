@@ -1,5 +1,7 @@
-export interface IDesarrollador{
-    nombre: string;
-    apellido: string ;
-    anios: number;
+import {IPostulante } from './postulante';
+export interface IDesarrollador extends IPostulante{
+    frontWorks:number,
+    backWorks:number,
+    movileWorks:number,
+    titlesDevelop:number
 }

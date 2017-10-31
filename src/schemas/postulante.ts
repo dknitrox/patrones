@@ -3,7 +3,12 @@ const Schema=mongoose.Schema;
 const postulanteSchema=new Schema({
     nombre:String,
     apellido:String,
-    anio:Number
+    experience:Number,
+    sueldoRef:Number,
+    sueldo:{type:Number,required:false},
+    notas:[{
+        type:Number,
+    }]
 })
 
-export const Postulante=mongoose.model('postulante',postulanteSchema);
+export const PostulanteSchema=mongoose.model('postulante',postulanteSchema);
